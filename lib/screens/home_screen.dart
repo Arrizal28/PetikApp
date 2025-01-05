@@ -1,5 +1,10 @@
+import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:petik_app/base/res/media.dart';
 import 'package:petik_app/base/res/styles/app_styles.dart';
+import 'package:petik_app/base/utils/all_json.dart';
+import 'package:petik_app/base/widgets/app_double_text.dart';
+import 'package:petik_app/base/widgets/ticket_view.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -12,8 +17,12 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppStyles.bgColor,
       body: ListView(
         children: [
+          const SizedBox(
+            height: 40,
+          ),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
@@ -40,17 +49,44 @@ class _HomeScreenState extends State<HomeScreen> {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           image: const DecorationImage(
-                              image: AssetImage("assets/images/logo.png"))),
+                              image: AssetImage(AppMedia.logo))),
                     )
                   ],
                 ),
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [Text("Search icon"), Text("Empty space")],
+                const SizedBox(
+                  height: 25,
+                ),
+                Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: const Color(0xFFF4F6FD)),
+                  child: const Row(
+                    children: [
+                      Icon(FluentSystemIcons.ic_fluent_search_regular,
+                          color: Color(0xFFBFC205)),
+                      Text("Search")
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 40),
+                const AppDoubleText(
+                  bigText: "Upcoming Flights",
+                  smallText: "View All",
+                ),
+                const SizedBox(height: 40),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: ticketList
+                        .map((item) => TicketView(ticket: item))
+                        .toList(),
+                  ),
                 )
               ],
             ),
-          )
+          ),
         ],
       ),
     );
