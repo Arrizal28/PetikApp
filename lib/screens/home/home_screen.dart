@@ -5,6 +5,7 @@ import 'package:petik_app/base/res/styles/app_styles.dart';
 import 'package:petik_app/base/utils/all_json.dart';
 import 'package:petik_app/base/widgets/app_double_text.dart';
 import 'package:petik_app/base/widgets/ticket_view.dart';
+import 'package:petik_app/screens/home/widgets/hotel.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -26,6 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -71,16 +73,35 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 const SizedBox(height: 40),
-                const AppDoubleText(
+                AppDoubleText(
                   bigText: "Upcoming Flights",
                   smallText: "View All",
+                  func: () => Navigator.pushNamed(context, "/all_tickets"),
                 ),
-                const SizedBox(height: 40),
+                const SizedBox(height: 20),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: ticketList
+                        .take(2)
                         .map((item) => TicketView(ticket: item))
+                        .toList(),
+                  ),
+                ),
+                const SizedBox(height: 40),
+                AppDoubleText(
+                  bigText: "Hotels",
+                  smallText: "View All",
+                  func: () => Navigator.pushNamed(context, "/all_hotels"),
+                ),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: hotelList
+                        .take(2)
+                        .map((singleHotel) => Hotel(
+                              hotel: singleHotel,
+                            ))
                         .toList(),
                   ),
                 )
