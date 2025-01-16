@@ -20,7 +20,10 @@ class SearchScreen extends StatelessWidget {
           Text("What are\nyou looking for?",
               style: AppStyles.headlineStyle1.copyWith(fontSize: 36)),
           const SizedBox(height: 20),
-          const AppTicketTabs(),
+          const AppTicketTabs(
+            firsTab: "All Tickets",
+            secondTab: "Hotels",
+          ),
           const SizedBox(height: 24),
           const AppTextIcon(
               icon: Icons.flight_takeoff_rounded, text: "Departure"),
