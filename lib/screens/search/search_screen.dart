@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:petik_app/base/res/styles/app_styles.dart';
+import 'package:petik_app/base/utils/app_routes.dart';
 import 'package:petik_app/base/widgets/app_double_text.dart';
 import 'package:petik_app/screens/search/widgets/app_text_icon.dart';
 import 'package:petik_app/screens/search/widgets/app_ticket_tabs.dart';
@@ -37,7 +38,7 @@ class SearchScreen extends StatelessWidget {
           AppDoubleText(
             bigText: "Upcoming Flights",
             smallText: "View All",
-            func: () => Navigator.pushNamed(context, "/all_tickets"),
+            func: () => Navigator.pushNamed(context, AppRoutes.allTickets),
           ),
           const SizedBox(
             height: 15,

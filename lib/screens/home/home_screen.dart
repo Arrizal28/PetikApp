@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:petik_app/base/res/media.dart';
 import 'package:petik_app/base/res/styles/app_styles.dart';
 import 'package:petik_app/base/utils/all_json.dart';
+import 'package:petik_app/base/utils/app_routes.dart';
 import 'package:petik_app/base/widgets/app_double_text.dart';
 import 'package:petik_app/base/widgets/ticket_view.dart';
 import 'package:petik_app/screens/home/widgets/hotel.dart';
@@ -76,7 +77,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 AppDoubleText(
                   bigText: "Upcoming Flights",
                   smallText: "View All",
-                  func: () => Navigator.pushNamed(context, "/all_tickets"),
+                  func: () =>
+                      Navigator.pushNamed(context, AppRoutes.allTickets),
                 ),
                 const SizedBox(height: 20),
                 SingleChildScrollView(
@@ -92,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 AppDoubleText(
                   bigText: "Hotels",
                   smallText: "View All",
-                  func: () => Navigator.pushNamed(context, "/all_hotels"),
+                  func: () => Navigator.pushNamed(context, AppRoutes.allHotels),
                 ),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
